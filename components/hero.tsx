@@ -29,20 +29,24 @@ export function Hero() {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button
-            size="lg"
-            className="text-lg px-8 bg-cyan-600 hover:bg-cyan-700 text-white transform hover:scale-105 transition-all duration-200"
-          >
-            <ShoppingCart className="mr-2 h-5 w-5" />
-            Ver Catálogo
-          </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            className="text-lg px-8 bg-transparent border-2 border-cyan-500 text-cyan-600 hover:bg-cyan-50 transform hover:scale-105 transition-all duration-200"
-          >
-            Falar no WhatsApp
-          </Button>
+          <a href="#catalogo">
+            <Button
+              size="lg"
+              className="text-lg px-8 bg-cyan-600 hover:bg-cyan-700 text-white transform hover:scale-105 transition-all duration-200"
+            >
+              <ShoppingCart className="mr-2 h-5 w-5" />
+              Ver Catálogo
+            </Button>
+          </a>
+          <a href= "https://wa.me/5598981427343?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20produtos%20da%20MC%20bebidas." target="_blank" rel="noopener noreferrer">
+            <Button
+              size="lg"
+              variant="outline"
+              className="text-lg px-8 bg-transparent border-2 border-cyan-500 text-cyan-600 hover:bg-cyan-50 transform hover:scale-105 transition-all duration-200"
+            >
+              Falar no WhatsApp
+            </Button>
+          </a>
         </div>
       </div>
     </section>
