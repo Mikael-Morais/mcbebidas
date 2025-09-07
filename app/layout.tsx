@@ -5,6 +5,7 @@ import { GeistMono } from "geist/font/mono"
 import { Analytics } from "@vercel/analytics/next"
 import { Suspense } from "react"
 import "./globals.css"
+import { CartProvider } from "@/context/cart-context"
 
 export const metadata: Metadata = {
   title: "Mc Bebidas - Sua Loja de Bebidas Online",
@@ -22,8 +23,10 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
-        <Suspense fallback={null}>{children}</Suspense>
-        <Analytics />
+        <CartProvider>
+          <Suspense fallback={null}>{children}</Suspense>
+          <Analytics />
+        </CartProvider>
       </body>
     </html>
   )

@@ -4,7 +4,8 @@ import { useState } from "react"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Minus, Plus, MessageCircle, Sparkles } from "lucide-react"
+import { Minus, Plus, ShoppingCart, Sparkles } from "lucide-react"
+import { useCart } from "../context/cart-context"
 
 interface Product {
   id: number
@@ -20,6 +21,7 @@ interface ProductCardProps {
 
 export function ProductCard({ product }: ProductCardProps) {
   const [quantity, setQuantity] = useState(1)
+  const { addToCart } = useCart()
 
   const handleQuantityChange = (change: number) => {
     const newQuantity = quantity + change
@@ -28,10 +30,8 @@ export function ProductCard({ product }: ProductCardProps) {
     }
   }
 
-  const handleWhatsAppOrder = () => {
-    const message = `Olá, gostaria de pedir ${quantity}x ${product.name} - R$ ${(product.price * quantity).toFixed(2).replace(".", ",")}`
-    const whatsappUrl = `https://wa.me/5598981427343?text=${encodeURIComponent(message)}`
-    window.open(whatsappUrl, "_blank")
+  const handleAddToCart = () => {
+    addToCart(product, quantity)
   }
 
   return (
@@ -98,11 +98,11 @@ export function ProductCard({ product }: ProductCardProps) {
 
       <CardFooter className="p-4 pt-0">
         <Button
-          className="w-full bg-green-600 hover:bg-green-700 text-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 font-semibold border-0"
-          onClick={handleWhatsAppOrder}
+          className="w-full bg-cyan-600 hover:bg-cyan-700 text-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 font-semibold border-0"
+          onClick={handleAddToCart}
         >
-          <MessageCircle className="mr-2 h-4 w-4" />
-          Pedir no WhatsApp
+          <ShoppingCart className="mr-2 h-4 w-4" />
+          Adicionar ao carrinho
         </Button>
       </CardFooter>
     </Card>
